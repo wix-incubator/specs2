@@ -2,7 +2,8 @@ package org.specs2
 package specification
 package script
 
-import shapeless.{ToList, HList, HNil, ::}
+import shapeless.{HList, HNil, ::}
+import shapeless.ops.hlist.ToList
 import execute._
 import ResultLogicalCombinators._
 import scalaz.std.list._
