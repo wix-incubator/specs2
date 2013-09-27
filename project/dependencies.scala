@@ -10,7 +10,7 @@ object dependencies {
     specs2
   
   // Libraries
-  def scalaz(scalazVersion: String = "7.0.2") = Seq(
+  def scalaz(scalazVersion: String = "7.1.0-M3") = Seq(
     "org.scalaz"                        %% "scalaz-core"               % scalazVersion,
     "org.scalaz"                        %% "scalaz-concurrent"         % scalazVersion)
 
