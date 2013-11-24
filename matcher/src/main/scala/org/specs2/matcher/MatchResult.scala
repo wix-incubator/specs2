@@ -249,7 +249,6 @@ class OrNotMatch[T] private[specs2](first: MatchResult[T], second: =>MatchResult
  */
 private[specs2]
 object MatchResult {
-  import Expectable._
 
   implicit val MatchResultFunctor: Functor[MatchResult] = new Functor[MatchResult] {
     def map[A, B](m: MatchResult[A])(f: A => B) = m match {

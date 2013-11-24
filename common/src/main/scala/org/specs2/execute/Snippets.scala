@@ -4,7 +4,7 @@ package execute
 import control.Exceptions._
 import text.NotNullStrings._
 import text.Trim._
-import scala.reflect.macros.{Context => MContext}
+import scala.reflect.macros.{WhiteboxContext => MContext}
 import scala.reflect.runtime.universe._
 import reflect.Macros
 import Snippet._
@@ -64,7 +64,7 @@ object Snippets extends Snippets {
   def create[T](c: MContext)(code: c.Expr[T])(params: c.Expr[SnippetParams[T]]): c.Expr[Snippet[T]] = {
     import c.{universe => u}; import u._
     import Macros._
-    val result = c.Expr(methodCall(c)("createSnippet", c.literal(c.macroApplication.pos.isRange).tree, stringExpr(c)(code), code.tree.duplicate, params.tree))
+    val result = c.Expr(methodCall(c)("createSnippet", q"${c.macroApplication.pos.isRange}", stringExpr(c)(code), code.tree.duplicate, params.tree))
     c.Expr(atPos(c.prefix.tree.pos)(result.tree))
   }
 }

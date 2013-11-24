@@ -4,7 +4,6 @@ package json
 import util.parsing.json._
 import util.matching.Regex
 import text.Regexes._
-import text.NotNullStrings._
 
 /**
  * This trait provides utility functions for Json objects
@@ -96,7 +95,7 @@ trait Json {
    */
   private def collect[T](json: JSONType)(values: Any => Seq[T] = vs,
                                          objects: JSONType => Seq[T] = os,
-                                         keyedValues: (Any, Any)  => Seq[T] = kvs,
+                                         keyedValues: (Any, Any)  => Seq[T],
                                          keyedObjects: (Any, Any) => Seq[T] = kvs): Seq[T] = json match {
     case JSONObject(map) => map.toList.flatMap { kv => kv match {
         case (k, (o: JSONType)) => objects(o) ++ keyedObjects(k, o) ++ collect(o)(values, objects, keyedValues, keyedObjects)

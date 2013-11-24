@@ -34,10 +34,7 @@ trait ThrownExpectations extends Expectations with StandardResults with Standard
       override val desc = alias
       override def map[S](f: T => S): Expectable[S] = createExpectable(f(value), desc)
       override def mapDescription(d: Option[String => String]): Expectable[T] = createExpectable(value, d)
-      override def evaluateOnce = {
-        val v = t
-        createExpectable(t, desc)
-      }
+      override def evaluateOnce = createExpectable(t, desc)
     }
 
   override def createExpectableWithShowAs[T](t: =>T, show: =>String): Expectable[T] =

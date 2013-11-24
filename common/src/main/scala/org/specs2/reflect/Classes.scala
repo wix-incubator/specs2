@@ -113,7 +113,7 @@ trait Classes extends Output {
   /**
    * Given a class, a zero or one-paramenter constructor, return an instance of that class
    */
-  private def createInstanceForConstructor[T <: AnyRef : ClassTag](c: Class[_], constructor: Constructor[_], parameter: Option[AnyRef] = None): Either[Throwable, T] = {
+  private def createInstanceForConstructor[T <: AnyRef : ClassTag](c: Class[_], constructor: Constructor[_], parameter: Option[AnyRef]): Either[Throwable, T] = {
     if (constructor.getParameterTypes.isEmpty)
       createInstanceOfEither[T](Some[Class[T]](c.asInstanceOf[Class[T]]))
     else if (constructor.getParameterTypes.size == 1) {
@@ -152,7 +152,7 @@ trait Classes extends Output {
     val constructor = klass.getDeclaredConstructors()(0)
     constructor.setAccessible(true)
     try {
-      var instance: AnyRef = constructor.newInstance().asInstanceOf[AnyRef]
+      val instance: AnyRef = constructor.newInstance().asInstanceOf[AnyRef]
       if (!m.runtimeClass.isInstance(instance)) {
         error(instance + " is not an instance of " + m.runtimeClass.getName)
       }

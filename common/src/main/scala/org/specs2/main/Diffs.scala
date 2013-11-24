@@ -2,7 +2,6 @@ package org.specs2
 package main
 
 import text._
-import EditDistance._
 
 /**
  * this trait is used to define and compute the differences between strings (used by the reporters)

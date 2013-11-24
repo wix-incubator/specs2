@@ -2,7 +2,6 @@ package org.specs2
 package main
 
 import scalaz.{Memo, Monoid, Scalaz}
-import Scalaz._
 import control._
 import Exceptions._
 import text._

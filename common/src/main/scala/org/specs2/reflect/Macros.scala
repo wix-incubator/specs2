@@ -1,31 +1,33 @@
 package org.specs2
 package reflect
 
-import scala.reflect.macros.Context
+import scala.reflect.macros.WhiteboxContext
 
 object Macros {
 
-  def toAST[A](c: Context)(xs: c.Tree*)(implicit tt: c.TypeTag[A]): c.Tree = {
+  def toAST[A](c: WhiteboxContext)(xs: c.Tree*)(implicit tt: c.TypeTag[A]): c.Tree = {
     import c.universe._
-    Apply(Select(Ident(typeOf[A].typeSymbol.companionSymbol), newTermName("apply")), xs.toList)
+    Apply(Select(Ident(typeOf[A].typeSymbol.companionSymbol), TermName("apply")), xs.toList)
   }
 
-  def methodCall(c: Context)(name: String, xs: c.Tree*): c.Tree = {
+  def methodCall(c: WhiteboxContext)(name: String, xs: c.Tree*): c.Tree = {
     import c.universe._
-    Apply(Ident(newTermName(name)), xs.toList)
+    Apply(Ident(TermName(name)), xs.toList)
   }
 
-  def stringExpr(c: Context)(variable: c.Expr[Any]): c.Tree =
-    c.literal(sourceOf(c)(variable)).tree
+  def stringExpr(c: WhiteboxContext)(variable: c.Expr[Any]): c.Tree = {
+    import c.universe._
+    q"""${sourceOf(c)(variable)}"""
+  }
 
-  def sourceOf(c: Context)(expr: c.Expr[_]): String = {
+  def sourceOf(c: WhiteboxContext)(expr: c.Expr[_]): String = {
     val p = expr.tree.pos
     val source = new String(p.source.content)
     if (p.isRange) source.substring(p.start, p.end)
     else p.lineContent.substring(p.point - p.source.lineToOffset(p.source.offsetToLine(p.point)))
   }
 
-  def termName(c: Context)(m: c.Expr[Any]): c.Expr[String] = {
+  def termName(c: WhiteboxContext)(m: c.Expr[Any]): c.Expr[String] = {
     import c.universe._
     val name = m.tree match {
       case Ident(termName)                                       => termName
@@ -39,7 +41,7 @@ object Macros {
       case Function(_, Apply(Select(_, termName), _))            => termName
       case other                                                 => c.abort(m.tree.pos, "The code must be a member selection, or a function application:\n"+showRaw(m.tree))
     }
-    c.literal(name.toString.trim)
+    c.Expr(q"""${name.toString.trim}""")
   }
 
 }

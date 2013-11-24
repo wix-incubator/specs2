@@ -88,7 +88,7 @@ trait FileReader {
     result
   }(e => report(e, filePath)).getOrElse(NodeSeq.Empty)
 
-  private[this] def parse(source: Source, sourceErrors: Boolean = true) = {
+  private[this] def parse(source: Source, sourceErrors: Boolean) = {
     if (sourceErrors) XhtmlParser(source)
     else new XhtmlParser(source) {
       override def reportSyntaxError(pos: Int, str: String): Unit = ()

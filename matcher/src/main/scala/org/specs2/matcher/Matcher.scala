@@ -4,12 +4,9 @@ package matcher
 import scalaz.Scalaz._
 import control.Exceptions._
 import execute._
-import Expectable._
 import text.Quote._
-import text.Plural._
 import text.Sentences._
 import text.NotNullStrings._
-import reflect.ClassName._
 import MatchResultMessages._
 import time.Duration
 import MatchResultLogicalCombinators._

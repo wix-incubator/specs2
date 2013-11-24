@@ -3,11 +3,9 @@ package matcher
 
 import control._
 import data.Sized
-import text.Quote._
 import text.Regexes._
 import text.Plural._
 import text.NotNullStrings._
-import collection.Iterablex._
 import collection.Seqx._
 import MatchersImplicits._
 import scala.collection.{GenSeq, GenTraversableOnce, GenTraversable}
