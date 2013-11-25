@@ -4,7 +4,6 @@ package reporter
 import _root_.org.scalatools.testing.{ EventHandler, Logger, Event, Result }
 import main.Arguments
 import text._
-import Trim._
 import time._
 import AnsiColors._
 import execute.{ Success, Failure, Error, Skipped, Pending, DecoratedResult }

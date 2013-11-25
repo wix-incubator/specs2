@@ -5,7 +5,6 @@ import TagsFragments._
 import scalaz.{syntax, Foldable, Scalaz}
 import Scalaz._
 import collection.Iterablex._
-import collection.Seqx._
 
 trait TagsAssociation {
   /**

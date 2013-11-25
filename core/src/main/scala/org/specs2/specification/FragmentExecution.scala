@@ -2,7 +2,6 @@ package org.specs2
 package specification
 
 import control.Exceptions._
-import text._
 import main.Arguments
 import time.SimpleTimer
 import StandardFragments._

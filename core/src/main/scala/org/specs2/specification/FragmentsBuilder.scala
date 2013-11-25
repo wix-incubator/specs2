@@ -5,7 +5,6 @@ import execute._
 import main._
 import scalaz.Scalaz._
 import collection.Seqx._
-import control.Functions._
 import control.ImplicitParameters
 
 /**
@@ -116,7 +115,7 @@ trait FragmentsBuilder extends ExamplesFactory with ImplicitParameters with Form
   def link(fss: Seq[Fragments]): Fragments                                    = fss.map(link).sumr
   /** create a link directly on a specification, with a given link */
   def link(htmlLink: HtmlLink, s: SpecificationStructure): Fragments          = link(htmlLink, s.content)
-  def link(htmlLink: HtmlLink, f: Fragments): Fragments                       = f.linkIs(htmlLink)
+  def link(htmlLink: HtmlLink, fs: Fragments): Fragments                      = fs.linkIs(htmlLink)
 
   /** create a html link without including the other specification fragments */
   def see(s: SpecificationStructure, ss: SpecificationStructure*): Fragments       = see(s.emptyContent, ss.map(_.emptyContent):_*)

@@ -12,7 +12,6 @@ import scalaz.Monoid
 import io.Location
 import scala.Either
 import data.SeparatedTags
-import TagsFragments._
 import scala.xml.NodeSeq
 
 /**

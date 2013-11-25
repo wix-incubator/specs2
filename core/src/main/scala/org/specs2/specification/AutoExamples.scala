@@ -3,7 +3,6 @@ package specification
 
 import io.FromSource._
 import text.Trim._
-import text._
 import execute._
 import matcher.MatchersImplicits._
 import matcher._

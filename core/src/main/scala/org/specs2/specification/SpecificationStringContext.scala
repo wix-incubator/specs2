@@ -4,7 +4,7 @@ package specification
 import main.{Arguments, ArgumentsArgs}
 import execute._
 import text.NotNullStrings._
-import scala.reflect.macros.{Context => MContext}
+import scala.reflect.macros.{WhiteboxContext => MContext}
 import reflect.Macros._
 import text.Interpolated
 import text.NotNullStrings._
@@ -48,6 +48,7 @@ trait SpecificationStringContext { outer: FragmentsBuilder with ArgumentsArgs wi
           case v : AnyValueAsResult[_] => AsResult(r) match {
             case DecoratedResult(t, e: Error) => createTextFragment(before).append(exampleFactory.newExample(description, e))
             case DecoratedResult(t, _)        => createTextFragment(text).append(createTextFragment(t.notNull).fragments)
+            case other                        => createTextFragment(before).append(exampleFactory.newExample(description, other))
           }
           case other                        => createTextFragment(before).append(exampleFactory.newExample(description, AsResult(r)))
         }
@@ -121,8 +122,8 @@ object S2Macro {
 
     val result =
       c.Expr(methodCall(c)("s2",
-        c.literal(content).tree,
-        c.literal(Yrangepos).tree,
+        q"""$content""",
+        q"""$Yrangepos""",
         toAST[List[_]](c)(texts:_*),
         toAST[List[_]](c)(variables.map(_.tree):_*),
         toAST[List[_]](c)(variables.map(stringExpr(c)(_)):_*)))

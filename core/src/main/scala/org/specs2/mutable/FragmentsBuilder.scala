@@ -4,11 +4,11 @@ package mutable
 import execute._
 import main._
 import text.RegexExtractor
-import RegexExtractor._
 import specification.{FormattingFragments => FF, _}
 import StandardResults._
 import control.ImplicitParameters
-import control.Functions._
+import scalaz._, Scalaz._
+import collection.Seqx._
 
 /**
  * Adding new implicits to support specs-like naming: "the system" should "do this" in { ... }
@@ -137,10 +137,10 @@ trait FragmentsBuilder extends specification.FragmentsBuilder
   /**
    * add a new link to the Fragments
    */
-  override def link(fss: Seq[Fragments]): Fragments               = addFragments(super.link(fss))
-  override def link(htmlLink: HtmlLink, fs: Fragments): Fragments = addFragments(super.link(htmlLink, fs))
-  override def see(fss: Seq[Fragments]): Fragments                = addFragments(super.see(fss))
-  override def see(htmlLink: HtmlLink, fs: Fragments): Fragments  = addFragments(super.see(htmlLink, fs))
+  override def link(fss: Seq[Fragments]): Fragments               = addFragments(fss.map(link).sumr)
+  override def link(htmlLink: HtmlLink, fs: Fragments): Fragments = addFragments(fs.linkIs(htmlLink))
+  override def see(fss: Seq[Fragments]): Fragments                = addFragments(fss.map(see).sumr)
+  override def see(htmlLink: HtmlLink, fs: Fragments): Fragments  = addFragments(fs.seeIs(htmlLink))
 
   protected def addFragments[T](s: String, fs: =>T, word: String): Fragments = {
     addFragments(FF.br)
@@ -224,7 +224,6 @@ trait NoFragmentsBuilder extends FragmentsBuilder {
 }
 
 import scalaz.{TreeLoc, Scalaz, Tree}
-import Scalaz._
 import Tree._
 import data.Trees._
 trait SideEffectingCreationPaths extends SpecificationNavigation {

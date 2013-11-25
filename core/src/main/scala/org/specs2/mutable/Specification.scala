@@ -7,7 +7,6 @@ import execute._
 import matcher._
 import main.ArgumentsShortcuts
 import specification._
-import control.Functions._
 
 abstract class Specification extends SpecificationLike
 trait SpecificationLike extends SpecificationStructure with SpecificationFeatures {

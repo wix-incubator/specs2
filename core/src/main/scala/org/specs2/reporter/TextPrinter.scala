@@ -1,19 +1,15 @@
 package org.specs2
 package reporter
 
-import scalaz.{ Monoid, Reducer, Scalaz, Foldable, Applicative, State }
+import scalaz.{ Reducer, Scalaz }
 import control.Throwablex._
 import Scalaz._
-import Foldable._
-import Monoid._
 import data.Reducerx._
 import collection.Seqx._
 import data.Tuples._
 import time._
 import text._
 import Trim._
-import Plural._
-import AnsiColors._
 import NotNullStrings._
 import execute._
 import main.Arguments
@@ -22,7 +18,6 @@ import Statistics._
 import Levels._
 import SpecsArguments._
 import matcher.DataTable
-import org.specs2.execute.Error.ThrowableException
 
 /**
  * This trait reduces a list of ExecutedFragments to a list of PrintLines.

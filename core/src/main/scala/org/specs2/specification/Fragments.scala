@@ -1,7 +1,6 @@
 package org.specs2
 package specification
 
-import collection.Iterablex._
 import execute.Executable
 import main.Arguments
 import scalaz.Monoid

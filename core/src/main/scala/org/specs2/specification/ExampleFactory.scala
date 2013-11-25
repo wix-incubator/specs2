@@ -2,7 +2,6 @@ package org.specs2
 package specification
 
 import execute.AsResult
-import control.Functions._
 
 /**
  * This trait defines methods for creating Examples.

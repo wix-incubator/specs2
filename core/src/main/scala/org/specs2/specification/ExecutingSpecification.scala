@@ -1,12 +1,9 @@
 package org.specs2
 package specification
 
-import collection.Iterablex._
 import java.util.concurrent.{Executors, ExecutorService}
 import control.NamedThreadFactory
-import ExecutingSpecification._
 import main.Arguments
-import scalaz.EphemeralStream._
 
 /**
  * a specification with a name and a sequence of fragments being executed
