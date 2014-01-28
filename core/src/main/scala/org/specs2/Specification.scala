@@ -6,7 +6,6 @@ import time._
 import execute._
 import matcher._
 import specification._
-import Functions._
 
 /**
  * The Specification trait can be extended to create a specification.

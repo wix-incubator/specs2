@@ -4,7 +4,6 @@ package reporter
 import sbt.testing._
 import main.Arguments
 import text._
-import Trim._
 import time._
 import AnsiColors._
 import org.specs2.execute.{ Success, Failure, Error, Skipped, Pending, DecoratedResult }

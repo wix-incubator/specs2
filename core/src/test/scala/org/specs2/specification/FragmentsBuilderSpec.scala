@@ -1,7 +1,6 @@
 package org.specs2
 package specification
 
-import text._
 import execute.Skipped
 import matcher._
 import Fragments._

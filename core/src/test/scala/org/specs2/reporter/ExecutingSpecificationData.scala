@@ -7,7 +7,6 @@ import org.scalacheck.{Gen, Arbitrary}
 import text.TextData._
 import java.util.concurrent.Executors
 import scalaz._
-import Scalaz._
 import concurrent._
 import Promise._
 import Strategy._

@@ -6,7 +6,6 @@ import Scalaz._
 import Tree._
 import collection.Seqx._
 import specification._
-import text.Trim._
 import data.Trees._
 import StandardFragments._
 

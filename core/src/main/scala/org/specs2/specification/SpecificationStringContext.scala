@@ -48,6 +48,7 @@ trait SpecificationStringContext { outer: FragmentsBuilder with ArgumentsArgs wi
           case v : AnyValueAsResult[_] => AsResult(r) match {
             case DecoratedResult(t, e: Error) => createTextFragment(before).append(exampleFactory.newExample(description, e))
             case DecoratedResult(t, _)        => createTextFragment(text).append(createTextFragment(t.notNull).fragments)
+            case res                          => createTextFragment(text).append(exampleFactory.newExample(description, res)) // should not happen
           }
           case other                        => createTextFragment(before).append(exampleFactory.newExample(description, AsResult(r)))
         }
@@ -80,7 +81,7 @@ trait SpecificationStringContext { outer: FragmentsBuilder with ArgumentsArgs wi
   implicit def markdownLinkIsSpecPart(link: MarkdownLink): SpecPart = stringIsSpecPart(link.toString)
 
   implicit class specificationInStringContext(sc: StringContext) {
-    def s2(variables: SpecPart*) = macro S2Macro.s2Implementation
+    def s2(variables: SpecPart*): Fragments = macro S2Macro.s2Implementation
   }
 
   /**

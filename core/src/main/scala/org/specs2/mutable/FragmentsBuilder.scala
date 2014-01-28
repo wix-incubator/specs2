@@ -3,12 +3,9 @@ package mutable
 
 import execute._
 import main._
-import text.RegexExtractor
-import RegexExtractor._
 import specification.{FormattingFragments => FF, _}
 import StandardResults._
 import control.ImplicitParameters
-import control.Functions._
 
 /**
  * Adding new implicits to support specs-like naming: "the system" should "do this" in { ... }
@@ -223,10 +220,10 @@ trait NoFragmentsBuilder extends FragmentsBuilder {
   override def text(s: String)                 = super.text(s)
 }
 
-import scalaz.{TreeLoc, Scalaz, Tree}
-import Scalaz._
+import scalaz.{TreeLoc, Tree}
 import Tree._
 import data.Trees._
+
 trait SideEffectingCreationPaths extends SpecificationNavigation {
 
   /**

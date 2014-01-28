@@ -2,10 +2,6 @@ package org.specs2
 package reporter
 
 import io.ConsoleOutput
-import main.Arguments
-import execute.Result
-import specification.Stats
-import text.Trim._
 
 /**
  * Implementation of the ResultOutput trait as Text

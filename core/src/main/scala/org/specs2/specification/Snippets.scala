@@ -3,7 +3,6 @@ package specification
 
 import execute._
 import main._
-import Snippet._
 
 /**
  * Snippets of code can be extracted from interpolated specification strings.

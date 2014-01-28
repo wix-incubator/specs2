@@ -74,8 +74,7 @@ trait SpecificationStructure extends DefaultFragmentsFormatting {
  * methods for creating SpecificationStructure instances from fragments
  */
 object SpecificationStructure {
-  import collection.Iterablex._
-  
+
   def apply(fs: Fragments): SpecificationStructure = new SpecificationStructure {
     def is = content
     override lazy val content = fs.fragments match {
@@ -120,8 +119,8 @@ object SpecificationStructure {
   }
 
   private def createSpecificationFromClassOrObject(className: String,
-                                                   classLoader: ClassLoader = Thread.currentThread.getContextClassLoader)
-                                                  (implicit args: Arguments = Arguments()) : Option[SpecificationStructure] = {
+                                                   classLoader: ClassLoader)
+                                                  (implicit args: Arguments) : Option[SpecificationStructure] = {
     // try to create the specification from a class name, without displaying possible errors
     tryToCreateObject[SpecificationStructure](className,
       printMessage = false,

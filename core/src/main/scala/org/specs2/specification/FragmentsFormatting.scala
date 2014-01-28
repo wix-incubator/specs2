@@ -1,8 +1,7 @@
 package org.specs2
 package specification
 
-import org.specs2.specification.TagsFragments.{TaggedAs, TaggingFragment}
-import FormattingFragments._
+import TagsFragments.TaggingFragment
 
 /**
  * This trait post-process fragments.

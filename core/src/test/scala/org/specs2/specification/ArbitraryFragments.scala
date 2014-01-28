@@ -3,8 +3,6 @@ package specification
 
 import org.scalacheck._
 import Arbitrary._
-import main.Arguments
-import control.LazyParameters._
 
 trait ArbitraryFragments extends execute.StandardResults with FormattingFragments {
 

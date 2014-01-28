@@ -4,8 +4,7 @@ package reporter
 import execute._
 import specification._
 import Levels._
-import scalaz.{Tree, Scalaz}
-import data.Trees._
+import scalaz.Tree
 import main.Arguments
 
 /**

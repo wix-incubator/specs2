@@ -4,16 +4,12 @@ package reporter
 import scalaz.{ Monoid, Reducer, Scalaz, Foldable, Applicative, State }
 import control.Throwablex._
 import Scalaz._
-import Foldable._
-import Monoid._
 import data.Reducerx._
 import collection.Seqx._
 import data.Tuples._
 import time._
 import text._
 import Trim._
-import Plural._
-import AnsiColors._
 import NotNullStrings._
 import execute._
 import main.Arguments

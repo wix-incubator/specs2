@@ -21,7 +21,6 @@ import scala.collection.mutable.ArrayBuffer
 private[specs2]
 trait Statistics {
 
-  import Stats._
   implicit def SpecsStatisticsMonoid  = new Monoid[SpecsStatistics] {
     def append(s1: SpecsStatistics, s2: =>SpecsStatistics): SpecsStatistics = {
       SpecsStatistics(s1.fragments ++ s2.fragments)

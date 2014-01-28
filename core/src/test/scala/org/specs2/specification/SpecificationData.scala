@@ -4,7 +4,6 @@ package specification
 import org.scalacheck._
 import text.TextData._
 import execute.StandardResults._
-import collection.Iterablex._
 import specification.StandardFragments._
 import execute.Executable
 

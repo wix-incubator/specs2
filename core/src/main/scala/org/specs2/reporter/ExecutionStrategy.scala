@@ -3,7 +3,6 @@ package reporter
 
 import java.util.concurrent.Executors
 import scalaz._
-import Scalaz._
 import concurrent._
 import Promise._
 import Strategy._
@@ -90,7 +89,7 @@ trait DefaultExecutionStrategy extends ExecutionStrategy with FragmentExecution 
       }) && previousSequence.exists(f => !isOk(f.get))
   }
 
-  private def executionArgs(arguments: Arguments, nextMustSkip: Boolean = false) =
+  private def executionArgs(arguments: Arguments, nextMustSkip: Boolean) =
     if (nextMustSkip) arguments <| args(skipAll=true)
     else              arguments
 

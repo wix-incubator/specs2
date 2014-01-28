@@ -2,10 +2,9 @@ package org.specs2
 package specification
 
 import TagsFragments._
-import scalaz.{syntax, Foldable, Scalaz}
+import scalaz.Scalaz
 import Scalaz._
 import collection.Iterablex._
-import collection.Seqx._
 
 trait TagsAssociation {
   /**

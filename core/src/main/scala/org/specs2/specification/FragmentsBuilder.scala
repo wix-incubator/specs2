@@ -5,7 +5,6 @@ import execute._
 import main._
 import scalaz.Scalaz._
 import collection.Seqx._
-import control.Functions._
 import control.ImplicitParameters
 
 /**
