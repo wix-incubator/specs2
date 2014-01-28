@@ -2,7 +2,7 @@ package org.specs2
 package matcher
 
 import text.Quote._
-import io._
+
 /**
  * The PathMatchers trait provides matchers which are applicable to strings representing paths
  */
@@ -118,11 +118,6 @@ trait FileBaseMatchers extends PathMatchers {
   def haveParent[T <: { def getPath(): String }](path: String) = (haveParentPath(path)) ^^ ((_:T).getPath)
   /** matches if file.list == list */   
   def haveList[T <: { def getPath(): String }](list: String) = (listPaths(list)) ^^ ((_:T).getPath)
-  /**
-   * transforms a string as a Path object to allow matches like:
-   * "c:/projects".path must exist
-   */
-  private implicit def asPath(p: String) = Path(p)
 }
 /**
  * This case class is used to provide the getPath() method,

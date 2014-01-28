@@ -3,7 +3,6 @@ package mutable
 
 import matcher._
 import org.specs2.specification._
-import execute.StandardResults._
 import execute.{DecoratedResult, Failure}
 import ThrownExpectationsSpecData._
 

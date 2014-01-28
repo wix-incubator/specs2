@@ -8,8 +8,8 @@ import scala.annotation.StaticAnnotation
  * Macro definitions to generate matchers for the members of a type T
  */
 trait MatcherMacros {
-  def matchA[T]  = macro org.specs2.matcher.MatcherMacros.matcherMacroImpl[T]
-  def matchAn[T] = macro org.specs2.matcher.MatcherMacros.matcherMacroImpl[T]
+  def matchA[T]: Matcher[T]  = macro org.specs2.matcher.MatcherMacros.matcherMacroImpl[T]
+  def matchAn[T]: Matcher[T] = macro org.specs2.matcher.MatcherMacros.matcherMacroImpl[T]
 
   class fieldMatcherBody(tree: Any) extends StaticAnnotation
 }
@@ -25,7 +25,7 @@ trait MatcherMacros {
  */
 object MatcherMacros extends MatcherMacros {
 
-  def matcherMacroImpl[T : c.WeakTypeTag](c: Context): c.Expr[Any] = { import c.universe._
+  def matcherMacroImpl[T : c.WeakTypeTag](c: Context): c.Expr[Matcher[T]] = { import c.universe._
     val typeOfT = weakTypeOf[T]
     val matcherClassType = newTypeName(matcherClassName[T](c))
 
@@ -83,7 +83,7 @@ object MatcherMacros extends MatcherMacros {
       new $matcherClassType {}
     """
 
-    c.Expr(setMacroPosition(c).transform(block))
+    c.Expr[Matcher[T]](setMacroPosition(c).transform(block))
   }
 
   def fieldMatcherImplementation[F, T : c.WeakTypeTag](c: Context)(fieldValue: c.Expr[F]) = {

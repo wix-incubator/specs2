@@ -4,7 +4,6 @@ package matcher
 import text.Trim._
 import text.Quote._
 import text.NotNullStrings._
-import execute._
 import scala.reflect.ClassTag
 import org.specs2.control.DefaultStackTraceFilter
 
@@ -166,7 +165,7 @@ class BeTrueMatcher extends Matcher[Boolean] {
  * Typed equality Matcher
  */
 class BeTypedEqualTo[T](t: =>T, equality: (T, T) => Boolean = (t1:T, t2:T) => t1 == t2) extends AdaptableMatcher[T] { outer =>
-  import AnyMatchers._
+
   protected val ok: String => String = identity
   protected val ko: String => String = identity
   

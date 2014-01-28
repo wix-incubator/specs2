@@ -3,7 +3,7 @@ package org.specs2
 import matcher.{MatchResult, Parameters, MatchersImplicits}
 import specification._
 import org.scalacheck.Prop
-import MatchersImplicits._
+
 /**
  * The ScalaCheck trait can be used to access ScalaCheck matchers
  */

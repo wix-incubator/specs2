@@ -4,8 +4,6 @@ package reporter
 import _root_.org.junit.runner._
 import org.specs2.data.Trees._
 import scalaz._
-import scalaz.Scalaz._
-import scalaz.Traverse._
 import main.Arguments
 import specification._
 import control.{ExecutionOrigin, Stacktraces}
@@ -25,7 +23,6 @@ import control.{ExecutionOrigin, Stacktraces}
  */
 private[specs2]
 abstract class JUnitDescriptions[F](className: String)(implicit reducer: Reducer[F, Levels[F]]) extends JUnitDescriptionMaker[F] {
-  import Levels._
 
   /**
    * @return fragment that must be used as the root description if the specification is empty
@@ -82,13 +79,7 @@ trait JUnitDescriptionMaker[F] extends ExecutionOrigin {
     children.foreach { child => desc._2.addChild(child._2) }
     desc
   }
-  /**
-   * unfolding function attaching children descriptions the root
-   */
-  private def flattenChildren = (result: DescribedFragment, current: DescribedFragment) => {
-    result._2.addChild(current._2)
-    result
-  }
+
   /** @return a sanitized description */
   def createDescription(className: String, suiteName: String = "", testName: String = "", label: String = "") = {
     val origin =

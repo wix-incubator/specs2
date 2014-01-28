@@ -21,7 +21,7 @@ trait FutureMatchers extends Expectations {
 
   def await[T](m: Matcher[T])(retries: Int = 0, timeout: FiniteDuration = 1.seconds): Matcher[Future[T]] = awaitFor(m)(retries, timeout)
 
-  private def awaitFor[T](m: Matcher[T])(retries: Int = 0, timeout: FiniteDuration = 1.seconds, totalDuration: FiniteDuration = 0.seconds): Matcher[Future[T]] = new Matcher[Future[T]] {
+  private def awaitFor[T](m: Matcher[T])(retries: Int, timeout: FiniteDuration, totalDuration: FiniteDuration = 0.seconds): Matcher[Future[T]] = new Matcher[Future[T]] {
     def apply[S <: Future[T]](a: Expectable[S]) = {
       try {
         val r = m(createExpectable(Await.result(a.value, atMost = timeout)))

@@ -208,7 +208,7 @@ case class XmlMatcher(functions: Seq[PathFunction]) extends Matcher[Seq[Node]] {
       case search :: functions => {
          val nextNodes = search(nodes)
          val searched  = search.searchedElements
-         val (ok, ko) = (messages._2, messages._3)
+         val (ok, _) = (messages._2, messages._3)
          val (newOk, newKo) = 
              (ok + " contains " + searched, 
               ok + " doesn't contain " + searched)

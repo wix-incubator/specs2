@@ -3,13 +3,9 @@ package reporter
 
 import specification._
 import org.scalacheck._
-import text.TextData._
-import collection.Iterablex._
 import SpecificationData._
 import main.Arguments
-import reporter._
 import scalaz._
-import concurrent.Promise._
 import Scalaz._
 
 trait ExecutedSpecificationData extends Data[ExecutedSpecification] with FragmentExecution with DefaultSequence with DefaultExecutionStrategy {

@@ -1,8 +1,6 @@
 package org.specs2
 package reporter
 
-import specification.SpecName._
-
 
 class OutputDirSpec extends Specification { def is = s2"""
                                                                                                                                             

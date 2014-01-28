@@ -33,7 +33,7 @@ class DebugSpec extends Specification with ScopedExpectations { def is = s2"""
 }
 
 trait output extends Scope with MustMatchers {
-  private var msgs = ListBuffer[String]()
+  private val msgs = ListBuffer[String]()
   private def messages = msgs.toSeq
 
   // this implicit intercepts appended messages from the calls to 'pp'

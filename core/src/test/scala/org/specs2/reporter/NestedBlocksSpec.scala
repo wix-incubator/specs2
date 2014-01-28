@@ -1,8 +1,8 @@
 package org.specs2
 package reporter
+
 import NestedBlocks._
 import specification._
-import Fragments._
 
 class NestedBlocksSpec extends Specification { def is = s2"""
   associateStartEnd takes a seq of blocks and associating start and end blocks with a function:
