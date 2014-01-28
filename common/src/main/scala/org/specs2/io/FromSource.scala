@@ -3,7 +3,6 @@ package io
 
 import io.FileReader._
 import io.Paths._
-import control.Throwablex._
 import control.Exceptions._
 import main.SystemProperties
 import control.TraceLocation
@@ -80,7 +79,7 @@ trait FromSource {
   /**
    * @return lines of code specified by a start line and an end line in a file given by a TraceLocation
    */
-  private def getCodeFromToWithLocation(startLine: Int, endLine: Int = 9, location: TraceLocation): Either[String, String] = {
+  private def getCodeFromToWithLocation(startLine: Int, endLine: Int, location: TraceLocation): Either[String, String] = {
     val path = srcTestDir+location.path
 
     if (endLine < startLine) {

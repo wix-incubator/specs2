@@ -7,7 +7,6 @@ import text.NotNullStrings._
 import main.Arguments
 import scalaz.Scalaz._
 import scalaz.{Foldable, Monoid}
-import Foldable._
 import collection.Seqx._
 import text.Message.concat
 import text.Sentences._

@@ -30,7 +30,7 @@ trait FileSystem extends org.specs2.io.FileReader with org.specs2.io.FileWriter 
 
   private def isVersionFile(f: File) = Seq(".svn", ".cvs").exists(f.getPath.contains(_))
 
-  private def fileMatchesPattern(f: File, pattern: String, verbose: Boolean = false) = {
+  private def fileMatchesPattern(f: File, pattern: String, verbose: Boolean) = {
     val filePath = "./"+f.getPath.replace("\\", "/")
     if (verbose && f.isFile) println(filePath+" matches pattern: "+(filePath matches pattern))
     f.isFile && (filePath matches pattern)
