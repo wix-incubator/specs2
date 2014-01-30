@@ -4,9 +4,7 @@ package reporter
 import java.io.Writer
 import scala.xml.{Xhtml, NodeSeq}
 import main.Arguments
-import HtmlUrls._
 import scalaz.Scalaz
-import Scalaz._
 
 trait HtmlFileWriter extends OutputDir {
 

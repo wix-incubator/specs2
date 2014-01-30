@@ -3,8 +3,7 @@ package html
 
 import scala.xml._
 import transform.{RuleTransformer, RewriteRule}
-import scalaz.{ Tree, TreeLoc, Scalaz, Show }
-import Scalaz._
+import scalaz.{ Tree, TreeLoc, Show }
 import Tree._
 import xml.Nodex._
 import java.net.URLDecoder

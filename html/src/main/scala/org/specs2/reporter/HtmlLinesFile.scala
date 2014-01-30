@@ -2,7 +2,6 @@ package org.specs2
 package reporter
 
 import scala.xml._
-import text._
 import form._
 import execute._
 import matcher.DataTable
@@ -195,7 +194,6 @@ private[specs2]
 case class HtmlSpecEnd(end: ExecutedSpecEnd, stats: Stats = Stats(), level: Int = 0, args: Arguments = Arguments()) extends HtmlLine {
   def print(out: HtmlReportOutput) = {
     implicit val doIt = (!args.xonly || stats.hasFailuresOrErrors) && stats.hasExpectations && (stats eq end.stats) && args.canShow("1")
-    implicit val arguments = args
 
     out ?> (_.printBr.printStats(end.specName, end.stats))
   }
