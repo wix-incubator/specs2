@@ -84,6 +84,7 @@ include(new HelloWorldSpec)
 To make things more concrete here is a full example: ${snippet{
 
 import mutable._
+import specification.Scope
 
 /**
  * This specification shows how to use the mutable.Specification trait to create a unit Specification

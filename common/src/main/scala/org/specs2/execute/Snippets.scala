@@ -4,7 +4,7 @@ package execute
 import control.Exceptions._
 import text.NotNullStrings._
 import text.Trim._
-import scala.reflect.macros.{Context => MContext}
+import scala.reflect.macros.blackbox.{Context => MContext}
 import scala.reflect.runtime.universe._
 import reflect.Macros
 import Snippet._
