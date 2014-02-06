@@ -4,7 +4,7 @@ package specification
 import main.{Arguments, ArgumentsArgs}
 import execute._
 import text.NotNullStrings._
-import scala.reflect.macros.blackbox.{Context => MContext}
+import scala.reflect.macros.{Context => MContext}
 import reflect.Macros._
 import text.Interpolated
 import text.NotNullStrings._

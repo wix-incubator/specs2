@@ -1,7 +1,7 @@
 package org.specs2
 package reflect
 
-import scala.reflect.macros.blackbox.Context
+import scala.reflect.macros.Context
 
 object Macros {
 
