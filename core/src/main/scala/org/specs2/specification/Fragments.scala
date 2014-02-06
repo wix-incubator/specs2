@@ -8,7 +8,7 @@ import scalaz.Monoid
 import Fragments._
 import specification.StandardFragments.{End, Br}
 import io.Paths._
-import org.specs2.specification.TagsFragments._
+import org.specs2.specification.TagFragments._
 
 /**
  * A Fragments object is a list of fragments with a SpecStart and a SpecEnd
@@ -38,10 +38,10 @@ case class Fragments(specTitle: Option[SpecName] = None, middle: Seq[Fragment] =
   /** append the fragments from fs, appending the text fragments if this object ends with a TaggingFragment and fs starts with a TaggingFragment */
   def appendTags(fs: Fragments): Fragments =
     (middle, fs.middle) match {
-      case (begin :+ (section1: AsSection), (section2: AsSection) +: rest) => new FragmentsFragment(this.copy(middle = Seq())) ^ fs.copy(middle = begin ++ (section1.add(section2) +: rest))
-      case (begin :+ (section1: Section),   (section2: Section) +: rest)   => new FragmentsFragment(this.copy(middle = Seq())) ^ fs.copy(middle = begin ++ (section1.add(section2) +: rest))
-      case (begin :+ (tag1: TaggedAs),      (tag2: TaggedAs) +: rest)      => new FragmentsFragment(this.copy(middle = Seq())) ^ fs.copy(middle = begin ++ (tag1.add(tag2) +: rest))
-      case (begin :+ (tag1: Tag),           (tag2: Tag) +: rest)           => new FragmentsFragment(this.copy(middle = Seq())) ^ fs.copy(middle = begin ++ (tag1.add(tag2) +: rest))
+      case (begin :+ (section1: AsSection), (section2: AsSection) +: rest) => new FragmentsFragment(this.copy(middle = Seq())) ^ fs.copy(middle = begin ++ (section1.overrideWith(section2) +: rest))
+      case (begin :+ (section1: Section),   (section2: Section) +: rest)   => new FragmentsFragment(this.copy(middle = Seq())) ^ fs.copy(middle = begin ++ (section1.overrideWith(section2) +: rest))
+      case (begin :+ (tag1: TaggedAs),      (tag2: TaggedAs) +: rest)      => new FragmentsFragment(this.copy(middle = Seq())) ^ fs.copy(middle = begin ++ (tag1.overrideWith(tag2) +: rest))
+      case (begin :+ (tag1: Tag),           (tag2: Tag) +: rest)           => new FragmentsFragment(this.copy(middle = Seq())) ^ fs.copy(middle = begin ++ (tag1.overrideWith(tag2) +: rest))
       case _                                                               => new FragmentsFragment(this) ^ fs
     }
 
@@ -78,7 +78,7 @@ case class Fragments(specTitle: Option[SpecName] = None, middle: Seq[Fragment] =
   def examples: Seq[Example]       = middle.collect(isAnExample)
   def texts: Seq[Text]             = middle.collect(isSomeText)
   def starts: Seq[SpecStart]       = middle.collect(isASpecStart)
-  def tags: Seq[TaggingFragment]   = middle.collect(isSomeTag)
+  def tags: Seq[TagFragment]   = middle.collect(isSomeTag)
 
   def linkMarkdown = linked.markdown
   def linkHtml     = linked.html
@@ -150,7 +150,7 @@ object Fragments {
   /** @return the step if the Fragment is an End fragment */
   def isAnEnd: PartialFunction[Fragment, Fragment] = { case e: End => e }
   /** @return the text if the Fragment is a TaggingFragment */
-  def isSomeTag: PartialFunction[Fragment, TaggingFragment] = { case t: TaggingFragment => t }
+  def isSomeTag: PartialFunction[Fragment, TagFragment] = { case t: TagFragment => t }
 
 
   /** @return a Fragments object with the appropriate name set on the SpecStart fragment */
