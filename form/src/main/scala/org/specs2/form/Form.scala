@@ -3,7 +3,6 @@ package form
 
 import scala.xml._
 import collection.Seqx._
-import collection.Iterablex._
 import xml.Nodex._
 import text.Trim._
 import execute._

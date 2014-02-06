@@ -152,12 +152,6 @@ case class EffectCell(e: Effect[_], result: Option[Result] = None) extends Cell 
     (<td class={executedResult.statusName} onclick={"showHide("+System.identityHashCode(executedResult).toString+")"}>{executedResult.message}</td> unless executedResult.isSuccess)
   }
 
-  private def statusName(r: Result) = r match {
-    case Skipped(_, _) => "info"
-    case Success(_, _) => "info"
-    case _             => r.statusName
-  }
-
   def execute = result.getOrElse(e.execute)
   def setResult(r: Result) = EffectCell(e, Some(r))
   def executeCell = EffectCell(e, result.orElse(Some(e.execute)))

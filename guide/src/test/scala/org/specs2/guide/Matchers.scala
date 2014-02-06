@@ -7,7 +7,6 @@ import mock.Mockito
 import org.mockito.invocation.InvocationOnMock
 import org.hamcrest.{BaseMatcher, Description}
 import specification.{Forms, Grouped, Snippets}
-import Forms._
 import org.scalacheck.{Arbitrary, Gen, Prop, Test}
 import matcher.{Hamcrest, Expectable, Matcher, Parameters}
 
@@ -828,8 +827,7 @@ In specs2, those 2 methods are defined by the `${fullName[matcher.ThrownMessages
      "consecutive returns"                     ! c().e2 ^
      "matchers"                                ! c().e3 ^
                                                end
-     import org.mockito.Matchers._
-     
+
      case class c() extends Mockito {
        val m = mock[java.util.List[String]]
        def e1 = {
