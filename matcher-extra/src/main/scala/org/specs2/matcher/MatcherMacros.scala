@@ -45,8 +45,10 @@ object MatcherMacros extends MatcherMacros {
 
       val valueBody    = q"""(fieldValue: $fieldType) =>
         addMatcher((t :$typeOfT) => new org.specs2.matcher.BeTypedEqualTo[$fieldType](fieldValue)(theValue[$fieldType](t.$parameterName).updateDescription(d => "  "+$fieldName+": "+d)).toResult)"""
+
       val matcherBody  = q"""(matcherValue: org.specs2.matcher.Matcher[$fieldType]) =>
         addMatcher((t :$typeOfT) => matcherValue[$fieldType](theValue[$fieldType](t.$parameterName).updateDescription(d => "  "+$fieldName+": "+d)).toResult) """
+
       val functionBody = q"""(f: $fieldType => org.specs2.execute.Result) => addMatcher((t :$typeOfT) => f(t.$parameterName)) """
 
    
