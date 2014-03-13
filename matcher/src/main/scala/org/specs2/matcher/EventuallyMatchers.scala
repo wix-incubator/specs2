@@ -1,8 +1,7 @@
 package org.specs2
 package matcher
 
-import time.Duration
-import time.TimeConversions._
+import scala.concurrent.duration._
 import execute.EventuallyResults
 
 /**
@@ -23,7 +22,7 @@ trait EventuallyMatchers extends EventuallyResults {
       if (result.isSuccess || retries == 1)
         result
       else {
-        Thread.sleep(sleep.inMillis)
+        Thread.sleep(sleep.toMillis)
         retry(retries - 1, sleep, a)
       }
     }

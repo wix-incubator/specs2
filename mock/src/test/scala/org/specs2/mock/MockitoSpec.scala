@@ -9,6 +9,7 @@ import org.mockito.invocation._
 import matcher._
 import scala.concurrent.ExecutionContext
 import ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 class MockitoSpec extends script.Specification with Mockito with ResultMatchers with Groups {  def is = s2"""
 

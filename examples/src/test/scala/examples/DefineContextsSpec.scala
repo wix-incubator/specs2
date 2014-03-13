@@ -6,8 +6,7 @@ import org.specs2.time._
 import org.specs2.execute._
 import org.specs2.matcher.{TerminationMatchers, MustMatchers}
 import org.specs2.main.CommandLineArguments
-import org.specs2.time.TimeConversions._
-
+import scala.concurrent.duration._
 
 /**
  * This specification shows various ways to setup contexts for examples.

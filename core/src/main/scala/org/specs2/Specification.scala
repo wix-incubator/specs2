@@ -31,7 +31,6 @@ trait SpecificationLike extends SpecificationStructure with SpecificationFeature
  *  - FormattingFragments: to use `p`, `br`, `end` to format the specification text
  *  - StandardResults: to use todo, pending, success in example bodies
  *  - AutoExamples: to allow the declaration of examples where the body of the example is its own description
- *  - TimeConversions: to create time expressions like `1.second`
  *  - PendingUntilFixed: to mark an example pending until it succeeds
  *  - Contexts: implicit methods to apply contexts to Results
  *  - Debug: to allow the insertion of .pp to print any expression to the Console and pass
@@ -47,7 +46,6 @@ trait SpecificationFeatures extends FragmentsBuilder with SpecificationStringCon
    with FormattingFragments
    with StandardResults
    with StandardMatchResults
-   with TimeConversions
    with PendingUntilFixed
    with Contexts
    with SpecificationNavigation

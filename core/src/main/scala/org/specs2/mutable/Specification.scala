@@ -26,7 +26,6 @@ trait SpecificationFeatures extends SpecificationStringContext
    with StandardMatchResults
    with mutable.Tags
    with AutoExamples
-   with TimeConversions
    with PendingUntilFixed
    with Contexts
    with SpecificationNavigation

@@ -1,9 +1,7 @@
 package org.specs2
 package execute
 
-import time.Duration
-import time.TimeConversions._
-
+import scala.concurrent.duration._
 /**
  * This trait adds the possibility to retry a given value, convertible to a result, until it succeeds.
  *
@@ -21,7 +19,7 @@ trait EventuallyResults {
       if (result.isSuccess || retries == 1)
         t
       else {
-        Thread.sleep(sleep.inMillis)
+        Thread.sleep(sleep.toMillis)
         retry(retries - 1, sleep, r)
       }
     }

@@ -5,7 +5,7 @@ import form._
 import matcher.ScalaInterpreterMatchers
 import text.LinesContent
 import java.io.File
-import time.TimeConversions
+import scala.concurrent.duration._
 
 object MatcherCards extends Cards {
   def title = "Specification Matchers"
@@ -556,7 +556,7 @@ implicit def linesforMyType[T]: LinesContent[T] = new LinesContent[T] {
   lazy val (line1, line2, line3) = ("", "", "")
 }
 
-object TerminationMatchers extends Card with matcher.TerminationMatchers with time.TimeConversions {
+object TerminationMatchers extends Card with matcher.TerminationMatchers {
   def title = "Termination"
   def text = s2"""
 
